@@ -40,7 +40,7 @@ jobs:
     steps:
       - name: Create user_data.sh
         run: |
-          sudo apt-get update && sudo apt-get install -y gettext
+          cd ${{ github.workspace }}          
           envsubst < user_data.sh.template > user_data.sh
 
   initialize-terraform:
