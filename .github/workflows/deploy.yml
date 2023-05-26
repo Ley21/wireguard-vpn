@@ -20,11 +20,6 @@ jobs:
         with:
           terraform_version: "1.1.0"
 
-  install-gettext:
-    runs-on: ubuntu-latest
-    needs: setup
-
-    steps:
       - name: Install gettext
         run: sudo apt-get update && sudo apt-get install -y gettext
 
@@ -51,7 +46,7 @@ jobs:
 
   initialize-terraform:
     runs-on: ubuntu-latest
-    needs: [setup, install-gettext, configure-aws-credentials, generate-user-data]
+    needs: [setup, configure-aws-credentials, generate-user-data]
 
     steps:
       - name: Initialize Terraform
