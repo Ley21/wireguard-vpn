@@ -38,12 +38,10 @@ jobs:
     needs: setup
 
     steps:
-      - name: Create user_data.sh
-        run: |
-          cd ${{ github.workspace }}
-          ls
-          sudo apt-get update && sudo apt-get install -y gettext       
-          envsubst < user_data.sh.template > user_data.sh
+      - uses: danielr1996/envsubst-action@1.0.0
+        with:
+          input: user_data.sh.template
+          output: user_data.sh
 
   initialize-terraform:
     runs-on: ubuntu-latest
