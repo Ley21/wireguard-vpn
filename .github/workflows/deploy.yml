@@ -47,7 +47,7 @@ jobs:
 
     steps:
       - name: Create user_data.sh
-        run: envsubst < ${{ github.workspace }}/user_data.sh.template > ${{ github.workspace }}/user_data.sh
+        run: envsubst < ${{ github.workspace }}/../user_data.sh.template > ${{ github.workspace }}/../user_data.sh
 
   initialize-terraform:
     runs-on: ubuntu-latest
