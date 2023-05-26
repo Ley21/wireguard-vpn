@@ -6,6 +6,9 @@ on:
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  wireguard_server_private_key: ${{ secrets.wireguard_server_private_key }}
+  wireguard_client1_public_key: ${{ secrets.wireguard_client1_public_key }}
+  wireguard_client2_public_key: ${{ secrets.wireguard_client2_public_key }}
 
 jobs:
   setup:
