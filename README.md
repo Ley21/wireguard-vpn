@@ -1,3 +1,4 @@
+[![Terraform Validate](https://github.com/Ley21/wireguard-vpn/actions/workflows/validate.yml/badge.svg)](https://github.com/Ley21/wireguard-vpn/actions/workflows/validate.yml)
 # Lightsail VPN Instance
 
 This Terraform code provisions a Lightsail VPN instance in AWS. The instance is based on Ubuntu 20.04 and uses the Nano 1.0 bundle.
