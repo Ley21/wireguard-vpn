@@ -47,4 +47,4 @@ jobs:
 
       - name: Destroy Terraform resources
         if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
-        run: terraform destroy -auto-approve tfplan
+        run: terraform apply -auto-approve tfplan
