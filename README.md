@@ -59,6 +59,20 @@ The following variables can be adjusted in the `variables.tf` file:
 - `instance_name`: Name of the Lightsail instance. (Default: "sego-vpn")
 - `availability_zone`: Availability zone for the instance. (Default: "eu-west-2a")
 
+## State Storage
+
+To configure remote state storage, it's recommended to create an S3 bucket in AWS. Modify the `backend.tf` file and replace the `<bucket-name>` placeholder with your desired bucket name.
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket = "<bucket-name>"
+    key    = "terraform.tfstate"
+    region = "us-east-1"  # Update with your desired region
+  }
+}
+```
+
 ## Costs
 
 The Lightsail VPN instance is based on the Nano 1.0 bundle, which has an associated cost per hour. Please refer to the AWS Lightsail pricing documentation for the most up-to-date pricing information.

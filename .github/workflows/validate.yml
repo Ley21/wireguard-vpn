@@ -1,0 +1,40 @@
+name: Terraform Validate
+
+on:
+  push:
+
+env:
+    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+    
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: "1.1.0"
+        
+      - name: Configure AWS credentials
+        run: |
+          mkdir -p ~/.aws
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/credentials
+          echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
+          chmod 600 ~/.aws/credentials
+
+      - name: Create demo user_data.sh
+        run: cp user_data.sh.template user_data.sh
+
+      - name: Initialize Terraform
+        run: terraform init
+
+      - name: Validate Terraform configuration
+        run: terraform validate
+      
+      - name: Generate Terraform plan
+        run: terraform plan --var-file=london.tfvars -out=tfplan
