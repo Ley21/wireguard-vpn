@@ -17,7 +17,7 @@ env:
   wireguard_client2_public_key: ${{ secrets.wireguard_client2_public_key }}
 
 jobs:
-  setup:
+  terraform-destroy:
     runs-on: ubuntu-latest
 
     steps:
